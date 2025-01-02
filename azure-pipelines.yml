@@ -1,15 +1,12 @@
-- main
-  vmImage: Default
+trigger:
+  - main
 
-variables:
-  buildConfiguration: 'Release'
+pool:
+  name: MyAgentPool
 
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
-
-pool: MyAgentPool
+steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-steps:
+
 - bash: echo hello world
