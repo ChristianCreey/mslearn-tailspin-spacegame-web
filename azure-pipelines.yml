@@ -5,11 +5,12 @@ pool:
   name: Default
 
 steps:
+- checkout: self
+  fetchDepth: 1
+
 - task: DotNetCoreCLI@2
   inputs:
     azureSubscription: 'Azure subscription 1(b28faa7d-94d9-4bed-be7b-b816bdb6e869)'
     command: 'build'
-- checkout: self
-  fetchDepth: 1
 
 - bash: echo hello world
