@@ -1,3 +1,12 @@
+- main
+  vmImage: Default
+
+variables:
+  buildConfiguration: 'Release'
+
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
+
 pool: MyAgentPool
 - task: DotNetCoreCLI@2
   inputs:
