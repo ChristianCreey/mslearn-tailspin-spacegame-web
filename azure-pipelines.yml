@@ -2,7 +2,7 @@ trigger:
   - main
 
 pool:
-  name: Azure Pipelines
+  name: Default
 
 steps:
 - task: DotNetCoreCLI@2
