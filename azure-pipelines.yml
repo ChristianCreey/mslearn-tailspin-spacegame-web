@@ -2,31 +2,12 @@ trigger:
   - main
 
 pool:
-  vmImage: Default
+  name: Default
 
 steps:
-- checkout: self
-
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '6.x'
-    installationPath: $(Agent.ToolsDirectory)/dotnet
-
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'restore'
-    projects: '**/*.csproj'
-
-- task: DotNetCoreCLI@2
-  inputs:
+    azureSubscription: 'Azure subscription 1(1)(b28faa7d-94d9-4bed-be7b-b816bdb6e869)'
     command: 'build'
-    projects: '**/*.csproj'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'publish'
-    projects: '**/*.csproj'
-    publishWebProjects: true
-    arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: true
+- bash: echo hello world
